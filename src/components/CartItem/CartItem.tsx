@@ -2,16 +2,16 @@ import React, { FC } from "react";
 import { Card, Image, Text, Group, Badge, createStyles, Button, rem } from '@mantine/core';
 import { ICartItem } from "../../types";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../../store/slices/cartSlice";
+import { addProduct, removeProduct } from "../../store/slices/cartSlice";
 
-interface ItemCardProps {
+interface CartItemProps {
   product: ICartItem;
 };
 
 const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
-    height: 480,
+    height: 580,
     width: 240,
   },
 
@@ -56,14 +56,9 @@ const useStyles = createStyles((theme) => ({
   }
 }));
 
-
-export const ItemCard: FC<ItemCardProps> = ({ product }): JSX.Element => {
+export const CartItem: FC<CartItemProps> = ({ product }): JSX.Element => {
   const { classes } = useStyles();
   const dispatch = useDispatch();
-
-  const handleBuyClick = () => {
-    dispatch(addProduct(product))
-  }
 
   return( 
     <Card withBorder radius="md" className={classes.card}>
@@ -90,11 +85,17 @@ export const ItemCard: FC<ItemCardProps> = ({ product }): JSX.Element => {
                 {'$' + product.price}
               </Text>
             </div>
-            <Button radius="xl" style={{ flex: 1 }} onClick={handleBuyClick}>
-              Buy
-            </Button>
+            <Group>
+              <Button size="xs" onClick={() => dispatch(addProduct(product))}>
+                +
+              </Button>
+              <Text fw={700}>{product.count}</Text>
+              <Button size="xs" onClick={() => dispatch(removeProduct(product))}>
+                -
+              </Button>
+            </Group>
           </Group>
         </Card.Section>
       </Card>
- )
+  )
 }
