@@ -1,8 +1,9 @@
 import React, { FC } from "react";
-import { Card, Image, Text, Group, Badge, createStyles, Button, rem } from '@mantine/core';
+import { Card, Image, Text, Group, Badge, createStyles, rem, ActionIcon } from '@mantine/core';
 import { ICartItem } from "../../types";
 import { useDispatch } from "react-redux";
 import { addProduct, removeProduct } from "../../store/slices/cartSlice";
+import { IconMinus, IconPlus } from "@tabler/icons-react";
 
 interface CartItemProps {
   product: ICartItem;
@@ -11,7 +12,7 @@ interface CartItemProps {
 const useStyles = createStyles((theme) => ({
   card: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
-    height: 580,
+    height: 480,
     width: 240,
   },
 
@@ -53,6 +54,14 @@ const useStyles = createStyles((theme) => ({
 
   titleGroup: {
     height: 150,
+  },
+  buttonsGroup: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  priceAndButtonsGroup: {
+    display: 'flex',
+    justifyContent: 'space-between',
   }
 }));
 
@@ -76,23 +85,23 @@ export const CartItem: FC<CartItemProps> = ({ product }): JSX.Element => {
               {product.description}
             </Text>
           </div>
-          <Badge variant="outline">{Math.round(product.discountPercentage) + '%'}</Badge>
+          <Badge variant="outline" color="red">-{Math.round(product.discountPercentage)}%</Badge>
         </Group>
         <Card.Section className={classes.section}>
-          <Group spacing={30}>
+          <Group className={classes.priceAndButtonsGroup} spacing={30}>
             <div>
               <Text fz="xl" fw={700} sx={{ lineHeight: 1 }}>
-                {'$' + product.price}
+                {'$' + product.price * product.count}
               </Text>
             </div>
-            <Group>
-              <Button size="xs" onClick={() => dispatch(addProduct(product))}>
-                +
-              </Button>
+            <Group className={classes.buttonsGroup}>
+              <ActionIcon color="blue" variant="filled" size="md" onClick={() => dispatch(addProduct(product))}>
+                <IconPlus/>
+              </ActionIcon>
               <Text fw={700}>{product.count}</Text>
-              <Button size="xs" onClick={() => dispatch(removeProduct(product))}>
-                -
-              </Button>
+              <ActionIcon color="blue" variant="filled" size="md" onClick={() => dispatch(removeProduct(product))}>
+                <IconMinus/>
+              </ActionIcon>
             </Group>
           </Group>
         </Card.Section>

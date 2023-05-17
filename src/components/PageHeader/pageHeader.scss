@@ -1,13 +1,18 @@
 .pageHeader {
+  height: 70px;
   padding: 10px 30px;
   background-color: #1c7ed6;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .pageHeader__container {
   display: flex;
   justify-content: space-between;
+  align-self: center;
   margin: auto;
-  max-width: 1000px;
+  max-width: 900px;
 }
 
 .logoImg {
@@ -15,45 +20,24 @@
   width: 40px;
 }
 
-.cartBtn {
-  min-width: 130px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  border: transparent;
-  border-radius: 25px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #dbdbdb;
-    transition: 0.3s;
-  }
-
-  &:active {
-    background-color: white;
-    transition: 0.2s;
-  }
-}
-
-.cartBtn__infoContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  padding-left: 5px;
-}
-
-.cartBtn__cartImg {
-  height: 35px;
+.cart__cartImg {
+  height: 40px;
   width: 35px;
 }
 
-.cartBtn__itemsCount {
-
+.cart__link {
+  padding: 10px;
 }
 
-.cartBtn__totalPrice {
-
+.cart_spanPrice {
+  position: relative;
+  bottom: 12px;
+  left: 80px;
+  padding: 5px;
+  font-size: 11px;
+  border-radius: 35px;
+  color: #fff;
+  background-color: #000;
 }
 
 .cartBtnSpanText {

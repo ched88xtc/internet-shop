@@ -12,3 +12,8 @@ export interface ICartItem {
 	title: string;
   count: number;
 }
+
+export interface ICartState {
+  cartProducts: ICartItem[];
+  totalPrice: number;
+}

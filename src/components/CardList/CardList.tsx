@@ -19,6 +19,7 @@ export const CardList: FC = (): JSX.Element => {
 			.then((res) => res.json())
 			.then((data) => setProductsList(data.products));
 	}, []);
+	
 	productsList.map(product => product.count = 1);
 
 	return (

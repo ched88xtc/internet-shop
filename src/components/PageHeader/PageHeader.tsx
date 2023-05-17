@@ -1,29 +1,32 @@
 import React, { FC } from "react";
 import './pageHeader.scss';
-import logo from '../../assets/shopping-logo.svg'
-import cartLogo from '../../assets/basket.png'
+import logo from '../../assets/shopping-logo.png'
+import cartLogo from '../../assets/cart.png'
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+interface IRootState {
+	cartProducts: {
+		totalPrice: number,
+	}
+}
+
 export const PageHeader: FC = (): JSX.Element => {
-  const totalCount = useSelector((state: any) => state.cartProducts.totalCount);
-  const totalPrice = useSelector((state: any) => state.cartProducts.totalPrice);
+  const totalPrice = useSelector((state: IRootState) => state.cartProducts.totalPrice);
 
   return (
     <header className="pageHeader">
 			<div className="pageHeader__container">
-				<a href="">
+				<Link to="/">
 	  			<img src={logo} className="logoImg" alt="logo"></img>
-				</a>
-				<Link to="/cart">
-					<button className="cartBtn">
-							<div className="cartBtn__infoContainer">
-								<span className="cartBtn__itemsCount cartBtnSpanText">Items: {totalCount}</span>
-								<span className="cartBtn__totalPrice cartBtnSpanText">Total: ${totalPrice}</span>
-							</div>
-		  				<img src={cartLogo} className="cartBtn__cartImg" alt="cart-logo"></img>
-					</button>
 				</Link>
+				
+					<div className="cart">
+							{totalPrice > 0 && <span className="cart_spanPrice">${totalPrice}</span>}
+							<Link to="/cart" className="cart__link">
+								<img src={cartLogo} className="cart__cartImg" alt="cart-logo"></img>
+							</Link>
+					</div>
 			</div>
 	</header>
 	);

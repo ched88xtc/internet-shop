@@ -81,7 +81,7 @@ export const ItemCard: FC<ItemCardProps> = ({ product }): JSX.Element => {
               {product.description}
             </Text>
           </div>
-          <Badge variant="outline">{Math.round(product.discountPercentage) + '%'}</Badge>
+          <Badge variant="outline" color="red">-{Math.round(product.discountPercentage)}%</Badge>
         </Group>
         <Card.Section className={classes.section}>
           <Group spacing={30}>
