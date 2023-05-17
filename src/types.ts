@@ -17,3 +17,8 @@ export interface ICartState {
   cartProducts: ICartItem[];
   totalPrice: number;
 }
+
+export interface IProductsState {
+	products: ICartItem[];
+  isLoading: boolean;
+}

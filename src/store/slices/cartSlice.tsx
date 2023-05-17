@@ -1,14 +1,14 @@
-import { createSlice, current } from '@reduxjs/toolkit';
-import { ICartItem, ICartState } from '../../types';
-import { getDataFromLS } from '../../helpers/getDataFromLS';
+import { createSlice } from "@reduxjs/toolkit";
+import { ICartItem, ICartState } from "../../types";
+import { getDataFromLS } from "../../helpers/getDataFromLS";
 
 const initialState: ICartState = {
-  cartProducts: getDataFromLS('cartProducts', 'array'),
-  totalPrice: getDataFromLS('totalPrice', 'number'),
+  cartProducts: getDataFromLS("cartProducts", "array"),
+  totalPrice: getDataFromLS("totalPrice", "number"),
 }
 
 const cartSlice = createSlice({
-  name: 'cartProducts',
+  name: "cartProducts",
   initialState,
   reducers: {
     addProduct(state, action) {

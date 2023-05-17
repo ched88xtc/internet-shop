@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import './pageHeader.scss';
-import logo from '../../assets/shopping-logo.png'
-import cartLogo from '../../assets/cart.png'
+import "./pageHeader.scss";
+import logo from "../../assets/shopping-logo.png"
+import cartLogo from "../../assets/cart.png"
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 

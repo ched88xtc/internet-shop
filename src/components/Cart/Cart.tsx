@@ -10,13 +10,15 @@ import {
 	createStyles,
 } from "@mantine/core";
 import { yupResolver } from "@hookform/resolvers/yup"
-import {object, string, number, } from 'yup';
+import {object, string, number, } from "yup";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { IconAt, IconMap2, IconPhone, IconUserCircle } from "@tabler/icons-react";
+import { ICartItem } from "../../types";
 
 interface IRootState {
 	cartProducts: {
+    cartProducts: ICartItem[],
 		totalPrice: number,
 	}
 }
@@ -32,13 +34,13 @@ const useStyles = createStyles((theme) => ({
 		borderRadius: "0.5rem",
 	},
   form: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
     gap: 15,
   },
 	formAndButtonContainer: {
     paddingTop: 21,
-    position: 'sticky',
+    position: "sticky",
     top: 55,
   },
 	buttonContainer: {
@@ -50,27 +52,27 @@ const useStyles = createStyles((theme) => ({
 	},
   submitBtn: {
     padding: 10,
-    background: '#1c7ed6',
-    color: '#fff',
-    border: 'none',
+    background: "#1c7ed6",
+    color: "#fff",
+    border: "none",
     borderRadius: 10,
-    cursor: 'pointer',
-    '&:hover': {
+    cursor: "pointer",
+    "&:hover": {
       background: "#156fbf",
       transition: "0.3s"
     },
-    '&:active': {
-      background: '#1c7ed6',
+    "&:active": {
+      background: "#1c7ed6",
       transition: "0.1s"
     }
   },
   inputWrapper: {
-    position: 'relative',
+    position: "relative",
   },
   spanError: {
     fontSize: 11,
-    color: 'red',
-    position: 'absolute',
+    color: "red",
+    position: "absolute",
   }
 }));
 
@@ -91,7 +93,7 @@ export const Cart: FC = (): JSX.Element => {
       .min(10, "Address cant be so short"),
     phone: string()
       .required("Phone number is required")
-      .matches(phoneRegExp, 'Phone number is not valid'),
+      .matches(phoneRegExp, "Phone number is not valid"),
     email: string()
       .email("Must be valid email address")
   });
@@ -105,8 +107,10 @@ export const Cart: FC = (): JSX.Element => {
   });
 
 	const totalPrice = useSelector((state: IRootState) => state.cartProducts.totalPrice);
+  const cartItems = useSelector((state: IRootState) => state.cartProducts.cartProducts);
 
 	const onSubmit = (data: any) => {
+    data = {...data, cartItems}
     //return axios.post("api/orders", data);  //to post some data
     alert(JSON.stringify(data));
 	};

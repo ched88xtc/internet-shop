@@ -16,9 +16,9 @@ const useStyles = createStyles((theme) => ({
 		justifyContent: "center",
 	},
 	spanEmptyCart: {
-		position: 'relative',
+		position: "relative",
 		top: 10,
-		color: '#999999'
+		color: "#999999"
 	}
 }));
 

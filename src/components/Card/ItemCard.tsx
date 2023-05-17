@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Card, Image, Text, Group, Badge, createStyles, Button, rem } from '@mantine/core';
+import { Card, Image, Text, Group, Badge, createStyles, Button, rem } from "@mantine/core";
 import { ICartItem } from "../../types";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/slices/cartSlice";
@@ -10,18 +10,18 @@ interface ItemCardProps {
 
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
     height: 480,
     width: 240,
   },
 
   imageSection: {
     padding: theme.spacing.md,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     borderBottom: `${rem(1)} solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
+      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
   },
 
@@ -31,23 +31,23 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 500,
     fontSize: theme.fontSizes.xs,
     letterSpacing: rem(-0.25),
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
 
   section: {
     marginTop: 10,
     padding: theme.spacing.md,
     borderTop: `${rem(1)} solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
+      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
   },
 
   description: {
-    display: '-webkit-box',
-    WebkitBoxOrient: 'vertical',
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
     WebkitLineClamp: 2,
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
+    overflow: "hidden",
+    textOverflow: "ellipsis",
     lineClamp: 2,
   },
 
@@ -87,7 +87,7 @@ export const ItemCard: FC<ItemCardProps> = ({ product }): JSX.Element => {
           <Group spacing={30}>
             <div>
               <Text fz="xl" fw={700} sx={{ lineHeight: 1 }}>
-                {'$' + product.price}
+                {"$" + product.price}
               </Text>
             </div>
             <Button radius="xl" style={{ flex: 1 }} onClick={handleBuyClick}>

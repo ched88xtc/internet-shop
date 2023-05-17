@@ -2,6 +2,15 @@ import React, { FC, useEffect, useState } from "react";
 import { ICartItem } from "../../types";
 import { Container, Grid, createStyles } from "@mantine/core";
 import { ItemCard } from "../Card/ItemCard";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../../store/slices/productsSlice";
+import { FiltersSnackbar } from "../FiltersSnackbar/FiltersSnackbar";
+
+interface IRootState {
+	products: {
+		products: ICartItem[],
+	}
+}
 
 const useStyles = createStyles((theme) => ({
 	gridItemContainer: {
@@ -12,25 +21,26 @@ const useStyles = createStyles((theme) => ({
 
 export const CardList: FC = (): JSX.Element => {
 	const { classes } = useStyles();
-	const [productsList, setProductsList] = useState<ICartItem[]>([]);
+	const dispatch = useDispatch();
+
+	const productsList = useSelector(
+		(state: IRootState) => state.products.products
+	)
 
 	useEffect(() => {
-		fetch("https://dummyjson.com/products")
-			.then((res) => res.json())
-			.then((data) => setProductsList(data.products));
+		dispatch(fetchProducts("all") as any)
 	}, []);
-	
-	productsList.map(product => product.count = 1);
 
 	return (
 		<Container size="md">
+			<FiltersSnackbar/>
 			<ul>
 				<Grid
 					gutter={10}
 					gutterXs="md"
 					gutterMd="xl"
 					gutterXl={50}
-					justify="center"
+					justify="flex-start"
 					align="center"
 				>
 					{productsList.map((product: ICartItem) => (
