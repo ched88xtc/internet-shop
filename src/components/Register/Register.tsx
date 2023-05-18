@@ -29,7 +29,7 @@ export const Register: FC = (): JSX.Element => {
 						token: user.accessToken,
 					})
 				);
-				history("/");
+				history("/internet-shop");
 			})
 			.catch(console.error);
 	};
