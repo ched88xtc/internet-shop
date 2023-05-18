@@ -8,7 +8,7 @@ React, Typescript, Redux(Redux Toolkit), React-router, Mantine-UI, react-hook-fo
 # About
 This is an example of an online store with basic and simple functionality. The main features of this online store include:
 
-- Product Selection: Users are able to choose a product from a list of available products.
+- Product Selection: Users are able to choose a product from a list of available products. Also user can filter products by category
 
 - Shopping Cart: Users can add selected products to their shopping cart. The shopping cart page displays the products that have been added, allowing users to review their selections. Products are stored in localStorage so that the user does not lose information when refreshing the page
 
