@@ -15,7 +15,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <HashRouter basename="/internet-shop">
+      <HashRouter>
         <MantineProvider withGlobalStyles withNormalizeCSS>
           <App />
         </MantineProvider>
