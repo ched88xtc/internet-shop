@@ -39,7 +39,7 @@ export const PageHeader: FC = (): JSX.Element => {
 					{totalPrice > 0 && (
 						<span className="cart_spanPrice">${totalPrice}</span>
 					)}
-					<Link to="/cart" className="cart__link">
+					<Link to="/internet-shop/cart" className="cart__link">
 						<img src={cartLogo} className="cart__cartImg" alt="cart-logo"></img>
 					</Link>
 				</div>
