@@ -1,34 +1,34 @@
 import { Container, InputBase, createStyles } from "@mantine/core";
 import React, { ChangeEvent, FC, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { fetchProducts } from "../../store/slices/productsSlice";
+import { useAppDispatch } from "../../hooks/redux-hooks";
 
 const useStyles = createStyles((theme) => ({
 	snackBarContainer: {
-    display: "flex",
-    position: "sticky",
-    overflowAnchor: "none",
-    top: 70,
-    zIndex: 1,
-    backgroundColor: "white",
-    justifyContent: "flex-start",
-    alignItems: "center",
+		display: "flex",
+		position: "sticky",
+		overflowAnchor: "none",
+		top: 70,
+		zIndex: 1,
+		backgroundColor: "white",
+		justifyContent: "flex-start",
+		alignItems: "center",
 	},
 	filtersContainer: {
-    margin: 0,
-    padding: "10px 0px",
+		margin: 0,
+		padding: "10px 0px",
 		maxWidth: 200,
 		display: "flex",
 		justifyContent: "flex-start",
 	},
 	filterInput: {
-    marginTop: "0 !important",
-  },
+		marginTop: "0 !important",
+	},
 }));
 
 export const FiltersSnackbar: FC = (): JSX.Element => {
 	const { classes } = useStyles();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const [categoriesList, setCategoriesList] = useState<string[] | []>([]);
 
 	useEffect(() => {

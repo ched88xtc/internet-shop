@@ -22,3 +22,15 @@ export interface IProductsState {
 	products: ICartItem[];
   isLoading: boolean;
 }
+
+export interface IAuthData {
+  email: string;
+  password: string;
+}
+
+export interface IUser {
+	id: number | undefined;
+	email: string | undefined;
+	token: string | undefined;
+	isAuth: boolean;
+}

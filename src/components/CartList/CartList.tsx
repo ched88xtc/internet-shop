@@ -2,12 +2,12 @@ import React, { FC } from "react";
 import { ICartItem } from "../../types";
 import { Container, Grid, createStyles } from "@mantine/core";
 import { CartItem } from "../CartItem/CartItem";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../hooks/redux-hooks";
 
 interface IRootState {
 	cartProducts: {
-		cartProducts: ICartItem[],
-	}
+		cartProducts: ICartItem[];
+	};
 }
 
 const useStyles = createStyles((theme) => ({
@@ -18,13 +18,13 @@ const useStyles = createStyles((theme) => ({
 	spanEmptyCart: {
 		position: "relative",
 		top: 10,
-		color: "#999999"
-	}
+		color: "#999999",
+	},
 }));
 
 export const CartList: FC = (): JSX.Element => {
 	const { classes } = useStyles();
-	const cartProducts = useSelector(
+	const cartProducts = useAppSelector(
 		(state: IRootState) => state.cartProducts.cartProducts
 	);
 

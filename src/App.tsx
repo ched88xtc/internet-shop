@@ -1,29 +1,22 @@
-import { MantineProvider } from "@mantine/core";
 import "./App.css";
-import { PageHeader } from "./components/PageHeader/PageHeader";
-import { Provider } from "react-redux";
-import store from "./store/store";
 import { CardList } from "./components/CardList/CardList";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Cart } from "./components/Cart/Cart";
+import { Login } from "./components/Login/Login";
+import { Register } from "./components/Register/Register";
 
 function App() {
-  return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <MantineProvider withGlobalStyles withNormalizeCSS>
-          <div className="App">
-            <PageHeader/>
-            <Routes>
-              <Route path="/" element={<CardList/>}/>
-              <Route path="/cart" element={<Cart/>}/>
-            </Routes>
-          </div>
-        </MantineProvider>
-      </BrowserRouter>
-    </Provider>
-    
-  );
+
+	return (
+		<div className="App">
+			<Routes>
+				<Route path="/login" element={<Login />} />
+				<Route path="/register" element={<Register />} />
+				<Route path="/" element={<CardList />} />
+				<Route path="/cart" element={<Cart />} />
+			</Routes>
+		</div>
+	);
 }
 
 export default App;

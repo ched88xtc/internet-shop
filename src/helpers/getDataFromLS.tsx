@@ -15,6 +15,18 @@ const getDataFromLS = (key: string, returnedValue: string) => {
 			return [];
 		}
 	}
+	if (returnedValue === "user") {
+		const data: string | null = localStorage.getItem(key);
+		if (data) {
+			return JSON.parse(data);
+		} else {
+			return {
+				id: null,
+  			email: null,
+  			token: null,
+			};
+		}
+	}
 };
 
 export { getDataFromLS };
