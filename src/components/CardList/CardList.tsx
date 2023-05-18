@@ -63,6 +63,6 @@ export const CardList: FC = (): JSX.Element => {
 			</Container>
 		</>
 	) : (
-		<Navigate to="/internet-shop/login" replace />
+		<Navigate to="/login" replace />
 	);
 };

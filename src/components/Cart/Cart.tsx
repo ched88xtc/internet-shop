@@ -214,7 +214,7 @@ export const Cart: FC = (): JSX.Element => {
 						</form>
 					</Container>
 					<Container className={classes.buttonContainer}>
-						<Link to="/internet-shop">
+						<Link to="/">
 							<Button variant="subtle">{"Back to shop"}</Button>
 						</Link>
 						<Text fw={500}>Total: ${totalPrice}</Text>

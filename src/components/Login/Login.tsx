@@ -40,7 +40,7 @@ export const Login: FC = (): JSX.Element => {
 			<AuthForm title="Sign in" handleClick={handleLogin} />
 			<Text>
 				{"Don't have an account yet? "}
-				<Link to="/internet-shop/register">Register</Link>
+				<Link to="/register">Register</Link>
 			</Text>
 		</Center>
 	);
